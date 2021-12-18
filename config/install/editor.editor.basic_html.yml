@@ -16,17 +16,16 @@ settings:
       - '|'
       - link
       - '|'
+      - blockQuote
       - bulletedList
       - numberedList
       - '|'
       - alignment
-      - 'alignment:center'
-      - 'alignment:left'
-      - 'alignment:right'
-      - 'alignment:justify'
+      - outdent
+      - indent
       - '|'
-      - blockQuote
       - uploadImage
+      - drupalMedia
       - '|'
       - sourceEditing
       - textPartLanguage

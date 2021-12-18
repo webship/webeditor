@@ -12,8 +12,8 @@
     }
   ],
   "support": {
-    "issues": "https://www.drupal.org/project/issues/webdev",
-    "source": "http://cgit.drupalcode.org/webdev"
+    "issues": "https://www.drupal.org/project/issues/webeditor",
+    "source": "http://cgit.drupalcode.org/webeditor"
   },
   "repositories": {
     "drupal": {
