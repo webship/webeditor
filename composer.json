@@ -1,0 +1,28 @@
+{
+  "name": "drupal/webeditor",
+  "description": "Web Editor has a preset of configs for basic web editing.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Webship",
+      "homepage": "http://webship.org",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/webdev",
+    "source": "http://cgit.drupalcode.org/webdev"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "require": {
+    "drupal/core": "~9.0",
+    "drupal/linkit": "@stable"
+  }
+}
