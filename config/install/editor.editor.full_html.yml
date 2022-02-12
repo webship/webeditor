@@ -37,7 +37,6 @@ settings:
       - '|'
       - removeFormat
       - '|'
-      - '-'
       - insertTable
       - horizontalLine
       - '|'
@@ -47,6 +46,7 @@ settings:
       - code
       - '|'
       - sourceEditing
+      - '-'
   plugins:
     ckeditor5_heading:
       enabled_headings:

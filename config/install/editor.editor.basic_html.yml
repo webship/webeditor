@@ -14,8 +14,6 @@ settings:
       - italic
       - underline
       - '|'
-      - link
-      - '|'
       - blockQuote
       - bulletedList
       - numberedList
@@ -24,6 +22,7 @@ settings:
       - outdent
       - indent
       - removeFormat
+      - '-'
   plugins:
     linkit_extension:
       linkit_enabled: true

@@ -15,7 +15,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <strong> <em> <u> <blockquote class="text-align-left text-align-center text-align-right text-align-justify"> <a href data-entity-type data-entity-uuid data-entity-substitution> <ul class="text-align-left text-align-center text-align-right text-align-justify"> <ol class="text-align-left text-align-center text-align-right text-align-justify"> <li> <drupal-media data-entity-type data-entity-uuid alt>'
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <strong> <em> <u> <blockquote class="text-align-left text-align-center text-align-right text-align-justify"> <ul class="text-align-left text-align-center text-align-right text-align-justify"> <ol class="text-align-left text-align-center text-align-right text-align-justify"> <li> <drupal-media data-entity-type data-entity-uuid alt> <a data-entity-type data-entity-uuid data-entity-substitution>'
       filter_html_help: false
       filter_html_nofollow: false
   filter_align:
