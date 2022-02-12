@@ -4,4 +4,7 @@ type: module
 core_version_requirement: ^9
 dependencies:
   - drupal:ckeditor5
+  - anchor_link:anchor_link
   - linkit:linkit
+  - extlink:extlink
+  - editor_advanced_link:editor_advanced_link

@@ -19,10 +19,48 @@
     "drupal": {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
     }
   },
   "require": {
-    "drupal/core": "^9.0",
-    "drupal/linkit": "@stable"
+    "composer/installers": "@stable",
+    "oomphinc/composer-installers-extender": "@stable",
+    "cweagans/composer-patches": "@stable",
+    "drupal/core": "^9",
+    "drupal/anchor_link": "3.0.x-dev",
+    "drupal/linkit": "^6",
+    "drupal/extlink": "@stable",
+    "drupal/editor_advanced_link": "@stable",
+    "npm-asset/ckeditor--ckeditor5-link": "@stable"
+  },
+  "extra": {
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "installer-paths": {
+      "libraries/link": ["npm-asset/ckeditor--ckeditor5-link"],
+      "libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ]
+    },
+    "drupal-libraries": {
+      "libraries": [
+        {"name": "link", "package": "npm-asset/ckeditor--ckeditor5-link"}
+      ]
+    },
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patches": {
+      "drupal/linkit": {
+        "Issue #3232190: Drupal 10 & CKEditor 5 readiness":
+        "https://www.drupal.org/files/issues/2022-01-10/linkit-without-info-change-n3232190-27.patch"
+      }
+    }
   }
 }

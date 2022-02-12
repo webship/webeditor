@@ -15,6 +15,7 @@ settings:
       - underline
       - '|'
       - link
+      - Anchor
       - '|'
       - blockQuote
       - bulletedList
