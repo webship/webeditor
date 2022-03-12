@@ -1,8 +1,10 @@
-### Remaining tasks
+### Checkpoints
 - [x] File an issue
-- [ ] Documentation
-- [ ] Code review by maintainers
+- [x] Add/Change/Fix Documentation
+- [ ] Readability
+- [ ] Accessibility
+- [ ] Copywriting Review by maintainers
 - [ ] Credit contributors
 - [ ] Review with the product owner
-- [ ] Update Release Notes
+- [ ] Release Notes
 - [ ] Release

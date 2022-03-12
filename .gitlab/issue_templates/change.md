@@ -1,29 +1,39 @@
 ### Problem/Motivation
 
 #### Steps to reproduce
-
+```
+  Given 
+   When 
+   Then 
+```
 
 ### Proposed resolution
 
-### Remaining tasks
+
+### Checkpoints
 - [x] File an issue
 - [ ] Change to current code or configurations
 - [ ] Testing to ensure no regression
-- [ ] Automated unit testing
-- [ ] Automated functional testing
+- [ ] Automated unit testing coverage
+- [ ] Automated functional testing coverage
+- [ ] UX/UI designer responsibilities
+- [ ] Readability
+- [ ] Accessibility
+- [ ] Performance
+- [ ] Security
 - [ ] Documentation
 - [ ] Code review by maintainers
 - [ ] Full testing and approval
 - [ ] Credit contributors
 - [ ] Review with the product owner
-- [ ] Update Release Notes
+- [ ] Release Notes
 - [ ] Release
-
-### User interface changes
-
 
 ### API changes
 
 
 ### Data model changes
+
+
+### Release notes snippet
 

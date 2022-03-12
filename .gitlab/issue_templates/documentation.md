@@ -1,24 +1,31 @@
 ### Problem/Motivation
 
 #### Steps to reproduce
-
+```
+  Given 
+   When 
+   Then 
+```
 
 ### Proposed resolution
 
-### Remaining tasks
+
+### Checkpoints
 - [x] File an issue
-- [ ] Documentation
-- [ ] Code review by maintainers
+- [ ] Add/Change/Fix Documentation
+- [ ] Readability
+- [ ] Accessibility
+- [ ] Copywriting Review by maintainers
 - [ ] Credit contributors
 - [ ] Review with the product owner
-- [ ] Update Release Notes
+- [ ] Release Notes
 - [ ] Release
-
-### User interface changes
-
 
 ### API changes
 
 
 ### Data model changes
+
+
+### Release notes snippet
 
