@@ -26,14 +26,13 @@
     }
   },
   "require": {
-    "composer/installers": "@stable",
-    "oomphinc/composer-installers-extender": "@stable",
-    "cweagans/composer-patches": "@stable",
-    "drupal/core": "^9",
-    "drupal/anchor_link": "3.0.x-dev",
-    "drupal/linkit": "^6",
-    "drupal/extlink": "@stable",
-    "drupal/editor_advanced_link": "@stable",
+    "composer/installers": "~2.0",
+    "oomphinc/composer-installers-extender": "~2.0",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~9.0 || ~10.0",
+    "drupal/linkit": "6.0.0-beta3",
+    "drupal/extlink": "~1.0",
+    "drupal/editor_advanced_link": "~2.0",
     "npm-asset/ckeditor--ckeditor5-link": "@stable"
   },
   "extra": {

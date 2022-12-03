@@ -1,10 +1,9 @@
 name: Web Editor
 description: 'Web Editor has a preset of configs for basic web editing.'
 type: module
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:ckeditor5
-  - anchor_link:anchor_link
   - linkit:linkit
   - extlink:extlink
   - editor_advanced_link:editor_advanced_link

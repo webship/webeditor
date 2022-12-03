@@ -64,3 +64,10 @@ filters:
         remote_audio: remote_audio
         remote_video: remote_video
         video: video
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: 0
+    settings:
+      replace_empty: '1'
