@@ -30,7 +30,7 @@
     "oomphinc/composer-installers-extender": "~2.0",
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~10.0",
-    "drupal/linkit": "6.0.-dev",
+    "drupal/linkit": "6.0.x-dev",
     "drupal/extlink": "~1.0",
     "drupal/editor_advanced_link": "~2.0"
   },
