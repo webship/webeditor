@@ -19,24 +19,13 @@
     "drupal": {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    },
-    "assets": {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
     }
   },
   "require": {
-    "composer/installers": "~2.0",
-    "oomphinc/composer-installers-extender": "~2.0",
-    "cweagans/composer-patches": "~1.0",
-    "drupal/core": "~10.1.0",
+    "drupal/core": "~10.2.0",
+    "drupal/webpatches": "~10.0",
     "drupal/linkit": "~6.1.0",
     "drupal/extlink": "~1.0",
     "drupal/editor_advanced_link": "~2.0"
-  },
-  "extra": {
-    "enable-patching": true,
-    "composer-exit-on-patch-failure": true,
-    "patches": { }
   }
 }
