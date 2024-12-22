@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "drupal/core": "~10.3.0",
+    "drupal/core": "~10.4.0",
     "drupal/webpatches": "~10.0",
     "drupal/linkit": "~6.1.0",
     "drupal/extlink": "~2.0",
