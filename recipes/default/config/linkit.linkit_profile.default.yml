@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+    - user
+id: default
+label: Default
+description: 'A default Linkit profile'
+matchers:
+  front_page:
+    uuid: 09f45ca4-8f0e-4f90-a7f2-c70a08a91e51
+    id: front_page
+    weight: -100
+    settings: {  }
+  email:
+    uuid: 19e6f8f1-5c8e-4b65-b8a3-8f1f9c4d8e7f
+    id: email
+    weight: -90
+    settings: {  }
+  external:
+    uuid: 29e7f9f2-6d9f-5c76-c9b4-9f2f0d5e9f8g
+    id: external
+    weight: -80
+    settings: {  }
+  file:
+    uuid: 39f8g0g3-7e0g-6d87-d0c5-0g3g1e6f0g9h
+    id: 'entity:file'
+    weight: -70
+    settings:
+      metadata: '[file:name] | [file:filemime] | [file:filesize]'
+      bundles: {  }
+      group_by_bundle: false
+      include_unpublished: false
+      substitution_type: canonical
+      limit: 100
+  media:
+    uuid: 49g9h1h4-8f1h-7e98-e1d6-1h4h2f7g1h0i
+    id: 'entity:media'
+    weight: -60
+    settings:
+      metadata: '[media:bundle:label] | [media:name]'
+      bundles: {  }
+      group_by_bundle: false
+      include_unpublished: false
+      substitution_type: canonical
+      limit: 100
+  user:
+    uuid: 59h0i2i5-9g2i-8f09-f2e7-2i5i3g8h2i1j
+    id: 'entity:user'
+    weight: -50
+    settings:
+      metadata: '[user:name] | [user:mail]'
+      bundles: {  }
+      group_by_bundle: false
+      include_unpublished: false
+      substitution_type: canonical
+      limit: 100

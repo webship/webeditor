@@ -1,0 +1,19 @@
+name: Web Editor - Default
+description: A recipe to manage default installed modules, configs and permissions.
+type: install
+install:
+  - editor
+  - filter
+  - media
+  - ckeditor5
+  - linkit
+  - extlink
+  - editor_advanced_link
+  - token_filter
+config:
+  strict: false
+  import:
+    linkit: '*'
+    extlink: '*'
+    editor_advanced_link: '*'
+    token_filter: '*'
