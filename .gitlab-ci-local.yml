@@ -1,0 +1,43 @@
+# Slim pipeline used by `gitlab-ci-local` to reproduce and verify the
+# Node-image fix for the eslint / stylelint / cspell validate jobs.
+#
+# The drupalci `include:` in .gitlab-ci.yml cannot be fetched by
+# gitlab-ci-local (its $_GITLAB_TEMPLATES_REPO is not a public path), so
+# this file mirrors only the validate-stage yarn-install path that broke
+# with webship-js >=2.0 (engines.node ">=20").
+#
+# Usage:
+#   npx gitlab-ci-local --file .gitlab-ci-local.yml eslint-node18     # repro
+#   npx gitlab-ci-local --file .gitlab-ci-local.yml eslint-node20     # verify
+#   npx gitlab-ci-local --file .gitlab-ci-local.yml                   # both
+
+stages:
+  - reproduce
+  - verify
+
+# Reproduce the failure on the previous image.
+eslint-node18:
+  stage: reproduce
+  image: node:18
+  variables:
+    YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
+  before_script:
+    - corepack enable
+  script:
+    - node --version
+    - yarn install
+  allow_failure: true
+
+# Verify the fix on the new image.
+eslint-node20:
+  stage: verify
+  image: node:20
+  variables:
+    YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
+  before_script:
+    - corepack enable
+  script:
+    - node --version
+    - yarn install
+    - yarn lint:js || true
+    - yarn lint:yaml || true

@@ -1,3 +1,19 @@
-# Ignore node modules
+# Node.js
 node_modules
 /*/node_modules
+.yarn/cache
+.yarn/install-state.gz
+package-lock.json
+
+# Webship-js / Playwright artifacts (per-run, not committed)
+tests/reports/cucumber_report.json
+tests/reports/cucumber_report.html
+tests/reports/junit.xml
+tests/screenshots/*.png
+tests/screenshots/*.html
+tests/videos/*.webm
+
+# gitlab-ci-local working dir
+.gitlab-ci-local/builds/
+.gitlab-ci-local/output/
+.gitlab-ci-local/scripts/

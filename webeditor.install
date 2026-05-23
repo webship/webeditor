@@ -2,16 +2,58 @@
 
 /**
  * @file
- * Install, update and uninstall functions.
+ * Install, update and uninstall functions for the Web Editor module.
  */
 
 use Drupal\Core\Recipe\Recipe;
 use Drupal\Core\Recipe\RecipeRunner;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Implements hook_install().
  */
 function webeditor_install() {
-  $default_recipe = Recipe::createFromDirectory(__DIR__ . '/recipes/default');
+  // Run the bundled recipe to install the editor / filter / linkit / extlink
+  // / editor_advanced_link / token_filter / media modules and to import any
+  // brand-new configuration (e.g. the Linkit "default" profile).
+  $recipe_dir = __DIR__ . '/recipes/default';
+  $default_recipe = Recipe::createFromDirectory($recipe_dir);
   RecipeRunner::processRecipe($default_recipe);
+
+  // Drupal recipes only IMPORT configuration that does not already exist —
+  // they will not overwrite a config object that the Standard profile (or any
+  // earlier module) already shipped (Basic HTML, Full HTML, Restricted HTML).
+  //
+  // Force-apply the Web Editor curated YAML on top of those existing configs
+  // so the recipe is the authoritative source for the bundled text formats
+  // and editor toolbars, regardless of install order.
+  $config_factory = \Drupal::configFactory();
+  $config_dir = $recipe_dir . '/config';
+  $force_overwrite = [
+    'filter.format.basic_html',
+    'filter.format.full_html',
+    'filter.format.restricted_html',
+    'editor.editor.basic_html',
+    'editor.editor.full_html',
+  ];
+  foreach ($force_overwrite as $name) {
+    $file = $config_dir . '/' . $name . '.yml';
+    if (!file_exists($file)) {
+      continue;
+    }
+    $data = Yaml::parse(file_get_contents($file));
+    if (!is_array($data)) {
+      continue;
+    }
+    // Preserve the existing UUID + default-config hash so dependent configs
+    // (e.g. editor.editor.* → filter.format.*) keep working.
+    $existing = $config_factory->getEditable($name);
+    $raw = $existing->getRawData();
+    foreach (['uuid', '_core'] as $preserve) {
+      if (isset($raw[$preserve]) && !isset($data[$preserve])) {
+        $data[$preserve] = $raw[$preserve];
+      }
+    }
+    $existing->setData($data)->save();
+  }
 }

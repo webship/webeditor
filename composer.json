@@ -6,8 +6,8 @@
   "minimum-stability": "dev",
   "authors": [
     {
-      "name": "Webship",
-      "homepage": "http://webship.org",
+      "name": "Webship.co",
+      "homepage": "http://webship.co",
       "role": "Maintainer"
     }
   ],
@@ -23,9 +23,9 @@
   },
   "require": {
     "drupal/core": "~11.3.0",
-    "drupal/webpatches": "11.0.x-dev",
     "drupal/linkit": "~7.0",
     "drupal/extlink": "~2.0",
-    "drupal/editor_advanced_link": "~2.0"
+    "drupal/editor_advanced_link": "~2.0",
+    "drupal/token_filter": "~2.0"
   }
 }
