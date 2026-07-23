@@ -7,7 +7,7 @@
 
 use Drupal\Core\Recipe\Recipe;
 use Drupal\Core\Recipe\RecipeRunner;
-use Symfony\Component\Yaml\Yaml;
+use Drupal\Component\Serialization\Yaml;
 
 /**
  * Implements hook_install().
@@ -41,7 +41,7 @@ function webeditor_install() {
     if (!file_exists($file)) {
       continue;
     }
-    $data = Yaml::parse(file_get_contents($file));
+    $data = Yaml::decode(file_get_contents($file));
     if (!is_array($data)) {
       continue;
     }
