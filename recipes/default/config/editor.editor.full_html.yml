@@ -68,8 +68,11 @@ settings:
     ckeditor5_language:
       language_list: all
     ckeditor5_list:
-      reversed: true
-      startIndex: true
+      properties:
+        reversed: true
+        startIndex: true
+        styles: true
+      multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
     editor_advanced_link_link:
