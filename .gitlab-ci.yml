@@ -7,6 +7,9 @@ include:
       - "/includes/include.drupalci.workflows.yml"
 
 variables:
+  # For now, build and test with Drupal 11.4 and PHP 8.4.
+  DRUPAL_CORE: "11.4.x-dev"
+  _TARGET_PHP: "8.4"
   COMPOSER_FLAGS: "--no-strict-lock"
   COMPOSER_MEMORY_LIMIT: "-1"
   # No yarn.lock is committed; Yarn 4 defaults to immutable installs and would
@@ -16,7 +19,6 @@ variables:
 # Override the default composer job to use development versions
 composer:
   variables:
-    DRUPAL_CORE: $CORE_SUPPORTED
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: 0
 
 cspell:
