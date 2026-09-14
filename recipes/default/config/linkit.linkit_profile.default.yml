@@ -32,7 +32,6 @@ matchers:
       metadata: '[file:name] | [file:filemime] | [file:filesize]'
       bundles: {  }
       group_by_bundle: false
-      include_unpublished: false
       substitution_type: canonical
       limit: 100
   media:
@@ -43,7 +42,6 @@ matchers:
       metadata: '[media:bundle:label] | [media:name]'
       bundles: {  }
       group_by_bundle: false
-      include_unpublished: false
       substitution_type: canonical
       limit: 100
   user:
@@ -54,6 +52,5 @@ matchers:
       metadata: '[user:name] | [user:mail]'
       bundles: {  }
       group_by_bundle: false
-      include_unpublished: false
       substitution_type: canonical
       limit: 100
