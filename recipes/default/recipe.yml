@@ -10,15 +10,6 @@ install:
   - extlink
   - editor_advanced_link
   - token_filter
-input:
-  default_langcode:
-    data_type: string
-    description: 'The default language of the site. Saved with the settings that hold translatable text.'
-    constraints:
-      NotBlank: []
-    default:
-      source: config
-      config: ['system.site', 'default_langcode']
 config:
   strict: false
   import:
@@ -27,7 +18,9 @@ config:
     editor_advanced_link: '*'
     token_filter: '*'
   actions:
-    # The settings hold translatable text, so they need a language code.
+    # The settings hold translatable text in English, so they need a language
+    # code. A fixed value: recipe inputs are not collected when the recipe is
+    # applied from hook_install() or from an installer batch.
     extlink.settings:
       simpleConfigUpdate:
-        langcode: ${default_langcode}
+        langcode: en
