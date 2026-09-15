@@ -12,10 +12,18 @@ use Drupal\Component\Serialization\Yaml;
 /**
  * Implements hook_install().
  */
-function webeditor_install() {
-  // Run the bundled recipe to install the editor / filter / linkit / extlink
-  // / editor_advanced_link / token_filter / media modules and to import any
-  // brand-new configuration (e.g. the Linkit "default" profile).
+function webeditor_install($is_syncing) {
+  // Configuration imports bring their own configuration. When the default
+  // recipe installs the module, the recipe is already applied and the text
+  // formats of the site stay as the recipe and the site template set them.
+  if (\Drupal::isConfigSyncing() || $is_syncing) {
+    return;
+  }
+
+  // The module is installed on its own. Run the bundled recipe to install the
+  // editor / filter / linkit / extlink / editor_advanced_link / token_filter /
+  // media modules and to import any brand-new configuration (e.g. the Linkit
+  // "default" profile).
   $recipe_dir = __DIR__ . '/recipes/default';
   $default_recipe = Recipe::createFromDirectory($recipe_dir);
   RecipeRunner::processRecipe($default_recipe);

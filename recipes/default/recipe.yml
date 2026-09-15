@@ -10,6 +10,8 @@ install:
   - extlink
   - editor_advanced_link
   - token_filter
+  # Last, after its dependencies: the Web Editor module itself.
+  - webeditor
 config:
   strict: false
   import:
