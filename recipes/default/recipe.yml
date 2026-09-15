@@ -26,3 +26,61 @@ config:
     extlink.settings:
       simpleConfigUpdate:
         langcode: en
+    # The Basic HTML and Full HTML editors may already exist, created by the
+    # core text format recipes or the install profile, and then the editors
+    # of this recipe are not imported. Enable Linkit on them with config
+    # actions: the Linkit filter, the link attributes Linkit adds, and the
+    # Linkit plugin with the default profile.
+    filter.format.basic_html:
+      setFilterConfig:
+        instance_id: linkit
+        configuration:
+          id: linkit
+          provider: linkit
+          status: true
+          weight: 0
+          settings:
+            title: true
+      setProperties:
+        filters.filter_html.settings.allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <cite> <dl> <dt> <dd> <a hreflang href data-entity-type data-entity-uuid data-entity-substitution> <blockquote cite> <ul type> <ol start type> <strong> <em> <code> <li> <img src alt data-entity-uuid data-entity-type height width data-caption data-align>'
+    filter.format.full_html:
+      setFilterConfig:
+        instance_id: linkit
+        configuration:
+          id: linkit
+          provider: linkit
+          status: true
+          weight: 0
+          settings:
+            title: true
+    # Link suggestions for content: the default Linkit profile matches nodes,
+    # also when the profile already exists.
+    linkit.linkit_profile.default:
+      setProperties:
+        matchers.node:
+          uuid: 7c1d5e2a-4b3f-4e8a-9d6c-2f1a0b9e8d7c
+          id: 'entity:node'
+          weight: -75
+          settings:
+            metadata: '[node:content-type:name] | [node:changed:medium]'
+            bundles: {  }
+            group_by_bundle: false
+            substitution_type: canonical
+            limit: 100
+            include_unpublished: false
+    # The editors are validated when they are saved: the Advanced links plugin
+    # gets its default settings too.
+    editor.editor.basic_html:
+      setProperties:
+        settings.plugins.editor_advanced_link_link:
+          enabled_attributes: {  }
+        settings.plugins.linkit_extension:
+          linkit_enabled: true
+          linkit_profile: default
+    editor.editor.full_html:
+      setProperties:
+        settings.plugins.editor_advanced_link_link:
+          enabled_attributes: {  }
+        settings.plugins.linkit_extension:
+          linkit_enabled: true
+          linkit_profile: default

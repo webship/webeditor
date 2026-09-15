@@ -4,6 +4,7 @@ dependencies:
   module:
     - file
     - media
+    - node
     - user
 id: default
 label: Default
@@ -24,6 +25,17 @@ matchers:
     id: external
     weight: -80
     settings: {  }
+  node:
+    uuid: 7c1d5e2a-4b3f-4e8a-9d6c-2f1a0b9e8d7c
+    id: 'entity:node'
+    weight: -75
+    settings:
+      metadata: '[node:content-type:name] | [node:changed:medium]'
+      bundles: {  }
+      group_by_bundle: false
+      substitution_type: canonical
+      limit: 100
+      include_unpublished: false
   file:
     uuid: 39f8g0g3-7e0g-6d87-d0c5-0g3g1e6f0g9h
     id: 'entity:file'
