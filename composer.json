@@ -3,7 +3,6 @@
   "description": "Web Editor has a preset of configs for basic web editing.",
   "type": "drupal-module",
   "license": "GPL-2.0-or-later",
-  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Webship.co",
