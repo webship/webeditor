@@ -3,7 +3,6 @@ node_modules
 /*/node_modules
 .yarn/cache
 .yarn/install-state.gz
-package-lock.json
 
 # Webship-js / Playwright artifacts (per-run, not committed)
 tests/reports/cucumber_report.json
@@ -17,3 +16,12 @@ tests/videos/*.webm
 .gitlab-ci-local/builds/
 .gitlab-ci-local/output/
 .gitlab-ci-local/scripts/
+
+# Yarn 4 cache and install state.
+.yarn/
+
+# JavaScript lockfiles are not committed: installs resolve from package.json
+# (packageManager yarn@4.18.1, engines).
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
