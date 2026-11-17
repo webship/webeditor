@@ -25,7 +25,9 @@ const config: PlaywrightConfig = {
   browser,
   launchOptions: {
     headless: process.env.HEADLESS !== 'false',
-    // SLOW_MO env var: 0 in CI for speed, 800ms when watching headed runs.
+    // Pause before every browser action, in ms: 300 by default, 800 with
+    // HEADLESS=false so a headed run can be watched. SLOW_MO wins over both:
+    // SLOW_MO=0 for full speed (npm run test:fast), in CI too.
     slowMo: parseInt(process.env.SLOW_MO || (process.env.HEADLESS === 'false' ? '800' : '300'), 10),
     args: browser === 'chromium' ? chromiumArgs : [],
   },

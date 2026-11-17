@@ -65,21 +65,24 @@ npx playwright install chromium
 export LAUNCH_URL=https://webship-site.ddev.site
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 export DRUPAL_LOGIN_WAIT=3000
-yarn test --tags "not @wip"
+yarn test --tags "not @wip and not @curated-toolbar"
 ```
 
 `DRUPAL_LOGIN_WAIT` is for the login form of the Webship site, which Honeypot
 protects with a time limit; a site without it needs none.
 `NODE_EXTRA_CA_CERTS` lets Node.js trust DDEV's HTTPS certificate for the
 steps that send a request outside the browser.
+`@curated-toolbar` marks the Basic HTML toolbar the module sets when it is
+installed on its own (CI). A site template that sets the text formats itself
+keeps its own toolbar, as a Webship site does, so a run there leaves it out.
 `yarn test:dry` checks that every step resolves to one definition, without
 a browser.
 
 ### 4. What green looks like
 
 ```
-28 scenarios (28 passed)
-130 steps (130 passed)
+27 scenarios (27 passed)
+121 steps (121 passed)
 ```
 
 The HTML report is written to `tests/reports/cucumber_report.html`. A failed

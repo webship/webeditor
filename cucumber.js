@@ -1,5 +1,5 @@
 // The webship-js configuration of this project, from the one `npx init-webship-js`
-// writes (webship-js 2.0.11), with @webship-js/drupal-core-steps and the test
+// writes (webship-js 2.0.12), with @webship-js/drupal-core-steps and the test
 // accounts added. How to run it: tests/README.md.
 
 // A feature file, a scenario (file:line), a folder or a rerun file named on
@@ -98,7 +98,10 @@ module.exports = {
           'cms-drupal-core-claro.json',
           'cms-drupal-cms-gin.json',
         ],
-        offset: 60,
+        // Named viewport sizes for the viewing-the-site and set-the-viewport
+        // steps and the @mobile / @desktop tags (built in: xs..xxxl, mobile,
+        // tablet, desktop). Without a desktop here, @desktop opens at the
+        // breakpoint marked default: true.
         breakpoints: {
           xs:   { width: 375,  height: 667  },
           sm:   { width: 576,  height: 800  },

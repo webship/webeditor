@@ -1,7 +1,12 @@
+@curated-toolbar
 Feature: CKEditor 5 toolbar configuration for Basic HTML
   As an admin user
   I want the Basic HTML toolbar to ship with a sensible default set
   So that authors get bold, italic, underline, lists, alignment and quotes
+
+  The module sets this toolbar when it is installed on its own. A site
+  template that sets the text formats itself (a Webship site) keeps its own
+  Basic HTML toolbar, so a run there leaves the feature out.
 
   Background:
     Given I am a logged in user with the "Webmaster" user
