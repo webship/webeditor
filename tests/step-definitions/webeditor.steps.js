@@ -142,9 +142,9 @@ const CKEDITOR5_BUTTON_LABEL_TO_ID = {
  * that textarea avoids the slow draggable UI that does not always render in
  * headless mode.
  *
- * Example: Then the active CKEditor 5 toolbar should contain "Bold"
+ * Example: Then the active rich text editor toolbar should contain "Bold"
  */
-Then(/^the active CKEditor 5 toolbar should contain "([^"]+)"$/, async function (label) {
+Then(/^the active rich text editor toolbar should contain "([^"]+)"$/, async function (label) {
   await attempt(async () => {
     const textarea = this.page.locator('#ckeditor5-toolbar-buttons-selected');
     await textarea.waitFor({ state: 'attached', timeout: 30000 });
@@ -166,9 +166,9 @@ Then(/^the active CKEditor 5 toolbar should contain "([^"]+)"$/, async function 
 /**
  * Assert that CKEditor 5 has rendered on the current page.
  *
- * Example: Then the CKEditor 5 editor should be visible
+ * Example: Then the rich text editor should be visible
  */
-Then(/^the CKEditor 5 editor should be visible$/, async function () {
+Then(/^the rich text editor should be visible$/, async function () {
   await attempt(async () => {
     const editor = this.page.locator('.ck.ck-editor').first();
     await editor.waitFor({ state: 'visible', timeout: 30000 });
@@ -178,9 +178,9 @@ Then(/^the CKEditor 5 editor should be visible$/, async function () {
 /**
  * Assert that the CKEditor 5 toolbar has rendered on the current page.
  *
- * Example: And the CKEditor 5 toolbar should be visible
+ * Example: And the rich text editor toolbar should be visible
  */
-Then(/^the CKEditor 5 toolbar should be visible$/, async function () {
+Then(/^the rich text editor toolbar should be visible$/, async function () {
   await attempt(async () => {
     const toolbar = this.page.locator('.ck.ck-toolbar').first();
     await toolbar.waitFor({ state: 'visible', timeout: 30000 });
@@ -190,9 +190,9 @@ Then(/^the CKEditor 5 toolbar should be visible$/, async function () {
 /**
  * Type some text into the active CKEditor 5 editing area.
  *
- * Example: When I type "Hello world" into the active CKEditor 5
+ * Example: When I type "Hello world" into the active rich text editor
  */
-When(/^I type "([^"]*)" into the active CKEditor 5$/, async function (text) {
+When(/^I type "([^"]*)" into the active rich text editor$/, async function (text) {
   await attempt(async () => {
     const area = this.page.locator('.ck.ck-editor__editable').first();
     await area.waitFor({ state: 'visible', timeout: 30000 });

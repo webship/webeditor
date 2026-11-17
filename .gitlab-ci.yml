@@ -93,8 +93,8 @@ stylelint:
 #      `.testing-job-base`) which already has PHP, Apache, Drush, and MySQL.
 #   3. before_script installs Drupal + the module, then Node.js + yarn deps +
 #      Playwright Chromium. Test jobs only override `script:`.
-#   4. The `Webmaster` account is the site-install super-admin. Other roles
-#      are provisioned by the first scenario in 01-01-01-users-login.feature.
+#   4. The site build creates the accounts of cucumber.js
+#      (worldParameters.users) with drush; the suite only logs in.
 # ──────────────────────────────────────────────────────────────────────────────
 .drupal-node-base:
   extends: .testing-job-base
@@ -105,8 +105,14 @@ stylelint:
     - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:$_TARGET_DB_IMAGE_TAG
       alias: database
   variables:
-    DRUPAL_ADMIN_USERNAME: "webmaster"
-    DRUPAL_ADMIN_PASSWORD: "dD.123123ddd"
+    # The accounts of cucumber.js worldParameters.users. Their passwords are
+    # made in before_script, for this throwaway site only.
+    DRUPAL_ADMIN_USER: "webmaster"
+    DRUPAL_ADMIN_MAIL: "webmaster@example.test"
+    DRUPAL_EDITOR_USER: "content_editor_user"
+    DRUPAL_EDITOR_MAIL: "content_editor_user@example.test"
+    DRUPAL_AUTHENTICATED_USER: "authenticated_user"
+    DRUPAL_AUTHENTICATED_MAIL: "authenticated_user@example.test"
     DRUPAL_TEST_BASE_URL: "http://localhost"
     LAUNCH_URL: "http://localhost"
     FORCE_COLOR: "1"
@@ -121,11 +127,16 @@ stylelint:
     - service apache2 start
     # ── Database ────────────────────────────────────────────────────────────
     - export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
+    # ── Test account passwords, for this job only ──────────────────────────
+    - export DRUPAL_ADMIN_PASS=$(php -r "echo bin2hex(random_bytes(12));")
+    - export DRUPAL_EDITOR_PASS=$(php -r "echo bin2hex(random_bytes(12));")
+    - export DRUPAL_AUTHENTICATED_PASS=$(php -r "echo bin2hex(random_bytes(12));")
     # ── Drupal site install ─────────────────────────────────────────────────
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT site:install standard
         --db-url=$SIMPLETEST_DB
-        --account-name=webmaster
-        --account-pass=dD.123123ddd
+        --account-name="$DRUPAL_ADMIN_USER"
+        --account-mail="$DRUPAL_ADMIN_MAIL"
+        --account-pass="$DRUPAL_ADMIN_PASS"
         --site-name="Web Editor Test"
         -y
     # As of Drupal core 11.4, the Standard profile no longer ships any
@@ -138,9 +149,11 @@ stylelint:
     # ── Module install ──────────────────────────────────────────────────────
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT en webeditor -y
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
-    # Per-role test users are provisioned by the first scenario in the suite
-    # (01-01-01-users-login.feature, "Webmaster can log in and provision the
-    # rest of the testing users"), so no separate drush step is needed here.
+    # ── Test accounts (cucumber.js worldParameters.users) ───────────────────
+    # The suite never creates or deletes an account: the site build does.
+    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT user:create "$DRUPAL_EDITOR_USER" --mail="$DRUPAL_EDITOR_MAIL" --password="$DRUPAL_EDITOR_PASS"
+    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT user:role:add content_editor "$DRUPAL_EDITOR_USER"
+    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT user:create "$DRUPAL_AUTHENTICATED_USER" --mail="$DRUPAL_AUTHENTICATED_MAIL" --password="$DRUPAL_AUTHENTICATED_PASS"
     # ── Node.js 24 ──────────────────────────────────────────────────────────
     - curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
     - apt-get install -y nodejs

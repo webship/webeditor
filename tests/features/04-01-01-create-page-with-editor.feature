@@ -10,14 +10,16 @@ Feature: Create a Basic page using the Full HTML editor
     When I navigate to "/node/add/page"
     Then I should see a "Title" field
      And I should see "Body"
-     And the CKEditor 5 editor should be visible
-     And the CKEditor 5 toolbar should be visible
+     And the rich text editor should be visible
+     And the rich text editor toolbar should be visible
 
   Scenario: Author can save a Basic page using the Full HTML format
     When I navigate to "/node/add/page"
      And I fill in "Title" with "Web Editor smoke test"
-     And I type "Hello from <strong>Web Editor</strong> CKEditor 5." into the active CKEditor 5
-     And I press "Save"
+     And I type "Hello from Web Editor." into the active rich text editor
+     And I save the content
     Then I should see "Basic page Web Editor smoke test has been created."
      And I should see "Hello from"
      And I should see "Web Editor"
+    When I delete the content item I created
+    Then I should see "has been deleted"

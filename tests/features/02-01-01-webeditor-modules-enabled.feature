@@ -7,13 +7,12 @@ Feature: Web Editor bundled modules are enabled
     Given I am a logged in user with the "Webmaster" user
 
   Scenario: Modules report status page lists Web Editor as enabled
-    When I navigate to "/admin/modules"
-    Then I should see "Web Editor"
-     And I should see "CKEditor 5"
-     And I should see "Text Editor"
-     And I should see "Filter"
-     And I should see "Media"
-     And I should see "Linkit"
-     And I should see "External Links"
-     And I should see "Editor Advanced link"
-     And I should see "Token Filter"
+    Then the "webeditor" module should be installed
+     And the "ckeditor5" module should be installed
+     And the "editor" module should be installed
+     And the "filter" module should be installed
+     And the "media" module should be installed
+     And the "linkit" module should be installed
+     And the "extlink" module should be installed
+     And the "editor_advanced_link" module should be installed
+     And the "token_filter" module should be installed
